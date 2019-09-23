@@ -31,7 +31,7 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 10.0):
             pass
         else:
             return emoji == '⏫' or emoji == '✖'
-    
+
     while cnt
         try:
             reaction, user = await client.wait_for('reaction_add', timeout=settime, check=check)
