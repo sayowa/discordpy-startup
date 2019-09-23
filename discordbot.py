@@ -40,7 +40,7 @@ async def pt(ctx, about = "募集", cnt = 8, settime = 3600.0):
                 test = discord.Embed(title=about,colour=0xffffff)
                 test.add_field(name=f"{cntb}人PTで残り{cnt}人募集\n", value='\n'.join(reaction_member), inline=True)
                 await msg.edit(embed=test)
-if cnt == 0:
+                if cnt == 0:
                     test = discord.Embed(title=about,colour=0xffffff)
                     test.add_field(name=f"{cntb}人PTで残り{cnt}人募集\n", value='\n'.join(reaction_member), inline=True)
 
