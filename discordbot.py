@@ -15,7 +15,7 @@ async def on_ready():
     print('------')
 
 @client.command()
-async def pt(ctx, about = "募集", cnt = 10, settime = 10.0):
+async def pt(ctx, about = "募集", cnt = 4, settime = 10.0):
     cnt, settime = int(cnt), float(settime)
     reaction_member = [""]
     test = discord.Embed(title=about,colour=0x1e90ff)
@@ -32,7 +32,7 @@ async def pt(ctx, about = "募集", cnt = 10, settime = 10.0):
         else:
             return emoji == '⏫' or emoji == '✖'
 
-    while len(reaction_member)-1 <= cnt:
+    while len(reaction_member)-1 <= 10:
         try:
             reaction, user = await client.wait_for('reaction_add', timeout=settime, check=check)
         except asyncio.TimeoutError:
