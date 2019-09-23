@@ -22,9 +22,9 @@ import discord
 client = discord.Client()
 
 @client.event
-async def on_message(message):
-    """メンバー募集 (.rect@数字)"""
-    if message.content.startswith(".rect"):
+async def pt(message):
+    """メンバー募集 (/pt@数字)"""
+    if message.content.startswith("/pt"):
         mcount = int(message.content[6:len(message.content)])
         text= "あと{}人 募集中\n"
         revmsg = text.format(mcount)
