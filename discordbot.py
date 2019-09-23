@@ -16,15 +16,15 @@ async def pt(ctx, about = "募集", cnt = 8, settime = 3600.0):
     test.add_field(name=f"{cntb}人PTで残り{cnt}人募集\n", value="下記は参加者一覧です。↑で参加表明、↓で離脱が行えます。集まらなかった場合も1時間後に募集は破棄されます。", inline=True)
     msg = await ctx.send(embed=test)
 
-    await msg.add_reaction(':arrow_up:')
-    await msg.add_reaction(':arrow_down:')
+    await msg.add_reaction('⏫')
+    await msg.add_reaction('✖')
 
     def check(reaction, user):
         emoji = str(reaction.emoji)
         if user.bot == True:
             pass
         else:
-            return emoji == ':arrow_up:' or emoji == ':arrow_down:'
+            return emoji == '⏫' or emoji == '✖'
 
     while len(reaction_member)-1 <= 8:
         try:
@@ -34,7 +34,7 @@ async def pt(ctx, about = "募集", cnt = 8, settime = 3600.0):
             break
         else:
             print(str(reaction.emoji))
-            if str(reaction.emoji) == ':arrow_up:':
+            if str(reaction.emoji) == '⏫':
                 reaction_member.append(user.name)
                 cnt -= 1
                 test = discord.Embed(title=about,colour=0xffffff)
@@ -49,7 +49,7 @@ async def pt(ctx, about = "募集", cnt = 8, settime = 3600.0):
                     await ctx.send('メンバーが集まったので'+about+'は〆ます。')
                     break
 
-            elif str(reaction.emoji) == ':arrow_down:':
+            elif str(reaction.emoji) == '✖':
                 if user.name in reaction_member:
                     reaction_member.remove(user.name)
                     cnt += 1
