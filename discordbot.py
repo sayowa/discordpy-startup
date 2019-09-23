@@ -16,8 +16,8 @@ async def on_ready():
 
 @client.command()
 async def pt(ctx, about = "募集", cnt = 4, settime = 10.0):
-    cnt, settime = int(cnt), float(settime)
-    reaction_member = [""]
+    cnt, settime = int(cnt), float(settime*60)
+    reaction_member = ["⏫で参加　✖で参加キャンセルだｿﾞ"]
     test = discord.Embed(title=about,colour=0x1e90ff)
     test.add_field(name=f"あと{cnt}人 募集中\n", value=None, inline=True)
     msg = await ctx.send(embed=test)
@@ -55,7 +55,7 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 10.0):
                     test.add_field(name=f"あと__{cnt}__人 募集中\n", value='\n'.join(reaction_member), inline=True)
                     await msg.edit(embed=test)
                     finish = discord.Embed(title=about,colour=0x1e90ff)
-                    finish.add_field(name="おっと、メンバーがきまったようだ",value='\n'.join(reaction_member), inline=True)
+                    finish.add_field(name="メンバーがきまったようｿﾞ",value='\n'.join(reaction_member), inline=True)
                     await ctx.send(embed=finish)
 
             elif str(reaction.emoji) == '✖':
