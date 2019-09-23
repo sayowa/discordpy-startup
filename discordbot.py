@@ -61,4 +61,4 @@ async def pt(ctx, about = "募集", cnt = 8, settime = 3600.0):
 
         await msg.remove_reaction(str(reaction.emoji), user)
 
-        client.run(token)
+client.run(token)
