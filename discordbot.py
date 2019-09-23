@@ -32,7 +32,7 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 10.0):
         else:
             return emoji == '⏫' or emoji == '✖'
 
-    while len(reaction_member)-1 <= 10:
+    while len(reaction_member)-1 <= cnt+1:
         try:
             reaction, user = await client.wait_for('reaction_add', timeout=settime, check=check)
         except asyncio.TimeoutError:
