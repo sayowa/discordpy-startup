@@ -41,9 +41,9 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 10.0):
         else:
             print(str(reaction.emoji))
             if str(reaction.emoji) == '⏫':
-                if user.name in reaction_member:
-                    await msg.remove_reaction(str(reaction.emoji), user)
-                    continue
+                #if user.name in reaction_member:
+                    #await msg.remove_reaction(str(reaction.emoji), user)
+                    #continue
                 reaction_member.append(user.name)
                 cnt -= 1
                 test = discord.Embed(title=about,colour=0x1e90ff)
