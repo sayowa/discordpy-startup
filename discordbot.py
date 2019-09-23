@@ -3,18 +3,18 @@ from discord.ext import commands
 import os
 import asyncio
 
-bot = commands.Bot(command_prefix='/')
+client = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
 
 
-@bot.event
+@client.event
 async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
     print('------')
 
-@bot.command()
+@client.command()
 async def rect(ctx, about = "募集", cnt = 4, settime = 10.0):
     cnt, settime = int(cnt), float(settime)
     reaction_member = [">>>"]
