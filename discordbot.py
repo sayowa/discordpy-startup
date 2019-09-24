@@ -15,28 +15,28 @@ async def on_ready():
     print('------')
 
 @client.command()
-async def pt(ctx, about = "募集", cnt = 4, settime = 10.0):
+async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
     cnt, settime = int(cnt), float(settime*60)
-    reaction_member = ["⏫で参加　✖で参加キャンセルだｿﾞ"]
+    reaction_member = ["⏫で参加　⏬で参加キャンセルだｿﾞ"]
     test = discord.Embed(title=about,colour=0x1e90ff)
     test.add_field(name=f"あと{cnt}人 募集中\n", value='\n'.join(reaction_member), inline=True)
     msg = await ctx.send(embed=test)
     #投票の欄
     await msg.add_reaction('⏫')
-    await msg.add_reaction('✖')
+    await msg.add_reaction('⏬')
 
     def check(reaction, user):
         emoji = str(reaction.emoji)
         if user.bot == True:    # botは無視
             pass
         else:
-            return emoji == '⏫' or emoji == '✖'
+            return emoji == '⏫' or emoji == '⏬'
 
     while 0 <= cnt:
         try:
             reaction, user = await client.wait_for('reaction_add', timeout=settime, check=check)
         except asyncio.TimeoutError:
-            await ctx.send('残念、人が足りなかったようだ...')
+            await ctx.send('募集時間が過ぎたｿﾞ、再度、募集ｵﾅｼｬｽ!')
             break
         else:
             print(str(reaction.emoji))
@@ -55,10 +55,10 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 10.0):
                     test.add_field(name=f"あと__{cnt}__人 募集中\n", value='\n'.join(reaction_member), inline=True)
                     await msg.edit(embed=test)
                     finish = discord.Embed(title=about,colour=0x1e90ff)
-                    finish.add_field(name="メンバーがきまったようｿﾞ",value='\n'.join(reaction_member), inline=True)
+                    finish.add_field(name="メンバーがきまったようｿﾞ",value= , inline=True)
                     await ctx.send(embed=finish)
 
-            elif str(reaction.emoji) == '✖':
+            elif str(reaction.emoji) == '⏬':
                 if user.name in reaction_member:
                     reaction_member.remove(user.name)
                     cnt += 1
