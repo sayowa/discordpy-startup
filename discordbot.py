@@ -15,8 +15,6 @@ async def on_ready():
     print('------')
 
 @client.command()
- if message.content == 'pthelp':
-        await message.channel.send('【募集名】・【募集人数】・【募集リミット（分）】になってるｿﾞ！\n『・』は、半角スペースで頼むｿﾞ\n募集名以降は記載しない場合、デフォで人数は4人、リミットは30分ｿﾞ')
 async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
     cnt, settime = int(cnt), float(settime*60)
     reaction_member = ["参加者一覧"]
@@ -72,4 +70,7 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
         # リアクション消す。メッセージ管理権限がないとForbidden:エラーが出ます。
         await msg.remove_reaction(str(reaction.emoji), user)
 
+        if message.content == 'pthelp':
+        await message.channel.send('【募集名】・【募集人数】・【募集リミット（分）】になってるｿﾞ！\n『・』は、半角スペースで頼むｿﾞ\n募集名以降は記載しない場合、デフォで人数は4人、リミットは30分ｿﾞ')
+        
 client.run(token)
