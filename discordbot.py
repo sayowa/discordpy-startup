@@ -37,6 +37,12 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
             reaction, user = await client.wait_for('reaction_add', timeout=settime, check=check)
         except asyncio.TimeoutError:
             await ctx.send('募集時間が過ぎたｿﾞ、再度、募集ｵﾅｼｬｽ!')
+            break    
+        else:
+        elif str(reaction.emoji) == '🚫':
+                reaction, user = await client.wait_for('reaction_add', timeout=settime, check=check)
+        except asyncio.TimeoutError:
+            await ctx.send('募集時間が過ぎたｿﾞ、再度、募集ｵﾅｼｬｽ!')
             break
         else:
             print(str(reaction.emoji))
@@ -67,12 +73,6 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
                     await msg.edit(embed=test)
                 else:
                     pass
-            elif str(reaction.emoji) == '🚫':
-                reaction, user = await client.wait_for('reaction_add', timeout=settime, check=check)
-        except asyncio.TimeoutError:
-            await ctx.send('募集時間が過ぎたｿﾞ、再度、募集ｵﾅｼｬｽ!')
-            break
-        else:
         # リアクション消す。メッセージ管理権限がないとForbidden:エラーが出ます。
         await msg.remove_reaction(str(reaction.emoji), user)
             
