@@ -5,7 +5,6 @@ import asyncio
 
 client = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
-ptAuthor = ""
 
 @client.event
 async def on_ready():
@@ -16,11 +15,12 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    ptAuthor = message.author
+    if client.user in message.mentions: # 話しかけられたかの判定
+        reply = f'{message.author.mention} 呼んだ？' # 返信メッセージの作成
+        await message.channel.send(reply) # 返信メッセージを送信
 
 @client.command()
 async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
-    await ctx.send(ptAuthor)
     cnt, settime = int(cnt), float(settime*60)
     reaction_member = ["ばななさん"]
     test = discord.Embed(title=about,colour=0x1e90ff)
