@@ -68,15 +68,6 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
                     await msg.edit(embed=test)
                 else:
                     pass
-                
-                    elif cnt == 0:
-                        test = discord.Embed(title=about,colour=0x1e90ff)
-                        test.add_field(name=f"あと__{cnt}__人 募集中\n", value='\n'.join(reaction_member), inline=True)
-                        await msg.edit(embed=test)
-                        finish = discord.Embed(title=about,colour=0x1e90ff)
-                        finish.add_field(name="メンバーがきまったようｿﾞ\n復活の魂わすれるなよ！", value='\n'.join(reaction_member),inline=True)
-                        await ctx.send(embed=finish)
-                    
         # リアクション消す。メッセージ管理権限がないとForbidden:エラーが出ます。
         await msg.remove_reaction(str(reaction.emoji), user)
             
