@@ -23,6 +23,7 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
     #投票の欄
     await msg.add_reaction('⏫')
     await msg.add_reaction('⏬')
+    await msg.add_reaction('🚫')
 
     def check(reaction, user):
         emoji = str(reaction.emoji)
@@ -43,7 +44,7 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
                 #if user.name in reaction_member:
                     #await msg.remove_reaction(str(reaction.emoji), user)
                     #continue
-                reaction_member.append(user.name.<@!user_id>)
+                reaction_member.append(user.name.)
                 cnt -= 1
                 test = discord.Embed(title=about,colour=0x1e90ff)
                 test.add_field(name=f"あと__{cnt}__人 募集中\n", value='\n'.join(reaction_member), inline=True)
