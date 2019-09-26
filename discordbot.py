@@ -39,12 +39,6 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
             await ctx.send('募集時間が過ぎたｿﾞ、再度、募集ｵﾅｼｬｽ!')
             break    
         else:
-        elif str(reaction.emoji) == '🚫':
-                reaction, user = await client.wait_for('reaction_add', timeout=settime, check=check)
-        except asyncio.TimeoutError:
-            await ctx.send('募集時間が過ぎたｿﾞ、再度、募集ｵﾅｼｬｽ!')
-            break
-        else:
             print(str(reaction.emoji))
             if str(reaction.emoji) == '⏫':
                 #if user.name in reaction_member:
