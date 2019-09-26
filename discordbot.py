@@ -7,11 +7,6 @@ client = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
 
 @client.event
-async def on_message(message):
-    if message.content == 'pthelp':
-    await message.channel.send('【募集名】・【募集人数】・【募集リミット（分）】になってるｿﾞ！\n『・』は、半角スペースで頼むｿﾞ\n募集名以降は記載しない場合、デフォで人数は4人、リミットは30分ｿﾞ')
-
-@client.event
 async def on_ready():
     print('Logged in as')
     print(client.user.name)
@@ -75,5 +70,5 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
         await msg.remove_reaction(str(reaction.emoji), user)
 
 
-client.run(token)
 
+client.run(token)
