@@ -13,10 +13,6 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-@client.event
-async def on_message(message):
-    await ctx.send(message.author.name)
-
 @client.command()
 async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
     cnt, settime = int(cnt), float(settime*60)
