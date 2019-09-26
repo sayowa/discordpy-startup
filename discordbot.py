@@ -23,7 +23,6 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
     #投票の欄
     await msg.add_reaction('⏫')
     await msg.add_reaction('⏬')
-    await msg.add_reaction('🚫')
 
     def check(reaction, user):
         emoji = str(reaction.emoji)
@@ -50,14 +49,6 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
                 test.add_field(name=f"あと__{cnt}__人 募集中\n", value='\n'.join(reaction_member), inline=True)
                 await msg.edit(embed=test)
                 
-                if str(reaction.emoji) == '🚫':
-             　   try:
-                    reaction, user = await client.wait_for('reaction_add', check=check)
-                　except asyncio.TimeoutError:
-                    await ctx.send('募集時間が過ぎたｿﾞ、再度、募集ｵﾅｼｬｽ!')
-                    break
-                else:
-
                 if cnt == 0:
                     test = discord.Embed(title=about,colour=0x1e90ff)
                     test.add_field(name=f"あと__{cnt}__人 募集中\n", value='\n'.join(reaction_member), inline=True)
