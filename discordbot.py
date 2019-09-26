@@ -14,7 +14,7 @@ async def on_ready():
     print('------')
 
 @client.command()
-async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
+async def pt(ctx, about = "募集", cnt = 4, settime = 30.0, member_mention):
     cnt, settime = int(cnt), float(settime*60)
     reaction_member = ["参加者一覧"]
     test = discord.Embed(title=about,colour=0x1e90ff)
