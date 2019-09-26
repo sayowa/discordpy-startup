@@ -16,7 +16,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    ptAuthor = message.author.name
+    ptAuthor = message.author
 
 @client.command()
 async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
