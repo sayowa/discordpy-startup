@@ -20,7 +20,7 @@ async def on_message(message):
 @client.command()
 async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
     cnt, settime = int(cnt), float(settime*60)
-    reaction_member = [message.author.mention]
+    reaction_member = ["ばなな"]
     test = discord.Embed(title=about,colour=0x1e90ff)
     test.add_field(name=f"あと{cnt}人 募集中\n", value='\n'.join(reaction_member), inline=True)
     msg = await ctx.send(embed=test)
