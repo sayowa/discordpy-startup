@@ -15,7 +15,7 @@ async def on_ready():
 
 @client.command()
 async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
-    await ctx.send(message.author.mention)
+    await ctx.send(user.name)
     cnt, settime = int(cnt), float(settime*60)
     reaction_member = ["参加者一覧"]
     test = discord.Embed(title=about,colour=0x1e90ff)
