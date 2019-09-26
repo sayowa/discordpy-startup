@@ -16,7 +16,7 @@ async def on_ready():
 @client.command()
 async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
     cnt, settime = int(cnt), float(settime*60)
-    reaction_member = ["ばななさん"]
+    reaction_member = ["⏫=参加　⏬=参加離脱　🚫=〆or中断"]
     test = discord.Embed(title=about,colour=0x1e90ff)
     test.add_field(name=f"あと{cnt}人 募集中\n", value='\n'.join(reaction_member), inline=True)
     msg = await ctx.send(embed=test)
@@ -73,7 +73,7 @@ async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
                 test.add_field(name=f"あと__{cnt}__人 募集中\n", value='\n'.join(reaction_member), inline=True)
                 await msg.edit(embed=test)
                 finish = discord.Embed(title=about,colour=0x1e90ff)
-                finish.add_field(name="締め切り", value='\n'.join(reaction_member),inline=True)
+                finish.add_field(name="こちらのPTは、〆ております。", value='\n'.join(reaction_member),inline=True)
                 await ctx.send(embed=finish)
         # リアクション消す。メッセージ管理権限がないとForbidden:エラーが出ます。
         await msg.remove_reaction(str(reaction.emoji), user)
