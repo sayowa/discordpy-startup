@@ -5,6 +5,7 @@ import asyncio
 
 client = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
+ptAuthor = ""
 
 @client.event
 async def on_ready():
@@ -13,10 +14,15 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
+@client.event
+async def on_message(message):
+    ptAuthor = message.author.name
+
 @client.command()
 async def pt(ctx, about = "募集", cnt = 4, settime = 30.0):
+    await ctx.send(ptAuthor)
     cnt, settime = int(cnt), float(settime*60)
-    reaction_member = ["ばなな"]
+    reaction_member = ["ばななさん"]
     test = discord.Embed(title=about,colour=0x1e90ff)
     test.add_field(name=f"あと{cnt}人 募集中\n", value='\n'.join(reaction_member), inline=True)
     msg = await ctx.send(embed=test)
